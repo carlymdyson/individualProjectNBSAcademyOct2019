@@ -1,6 +1,7 @@
 package com.nationwide.app.repository;
 
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,13 @@ public interface IndividualProjectBlogsRepository extends MongoRepository<Indivi
 	public IndividualProjectBlogs findByBlogtitle(String blogtitle);
 //	public IndividualProjectBlogs findById(String id);
 	public void deleteById(Optional<IndividualProjectBlogs> b);
+	public Optional<IndividualProjectBlogs> insert(String comment);
+	public static IndividualProjectBlogs insert(String comment, String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	}
 
 
-}
+

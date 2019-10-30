@@ -1,9 +1,12 @@
 package com.nationwide.app.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +15,7 @@ import com.nationwide.app.model.IndividualProjectBlogs;
 import com.nationwide.app.service.IndividualProjectBlogsService;
 
 @RestController
+@CrossOrigin("*")
 public class IndividualProjectBlogsController {
 	
 	@Autowired
@@ -21,6 +25,13 @@ public class IndividualProjectBlogsController {
 	public String create(@RequestParam String blogtitle, @RequestParam String blogtext) {
 		IndividualProjectBlogs b = individualProjectBlogsService.create(blogtitle, blogtext);
 		return b.toString();
+	}
+	
+	@RequestMapping("/insertComment")
+	public String insertComment(@RequestParam String id, @RequestParam String comment, @RequestParam String username) {
+		IndividualProjectBlogs b = individualProjectBlogsService.insertComment(id, comment, username);
+		return b.toString();
+		
 	}
 	
 	@RequestMapping("/get")
