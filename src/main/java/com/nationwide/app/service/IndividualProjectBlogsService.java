@@ -28,8 +28,8 @@ public class IndividualProjectBlogsService {
 	@Autowired 
 	private MongoOperations mongoOperations;
 	
-	public IndividualProjectBlogs create(String blogtitle, String blogtext) {
-		return individualProjectBlogsRepository.save(new IndividualProjectBlogs(blogtitle, null, blogtext));
+	public IndividualProjectBlogs create(IndividualProjectBlogs blog) {
+		return individualProjectBlogsRepository.save(blog);
 	}
 	
 	public List<IndividualProjectBlogs> getAll() {

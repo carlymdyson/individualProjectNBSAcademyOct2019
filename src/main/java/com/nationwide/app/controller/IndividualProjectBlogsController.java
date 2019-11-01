@@ -7,6 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,9 +23,12 @@ public class IndividualProjectBlogsController {
 	@Autowired
 	private IndividualProjectBlogsService individualProjectBlogsService;
 	
+//	@RequestMapping("/create/{blogtitle}/{blogtext}")
 	@RequestMapping("/create")
-	public String create(@RequestParam String blogtitle, @RequestParam String blogtext) {
-		IndividualProjectBlogs b = individualProjectBlogsService.create(blogtitle, blogtext);
+	public String create(@RequestBody IndividualProjectBlogs blog) {
+		
+		IndividualProjectBlogs b = individualProjectBlogsService.create(blog);
+		System.out.println("Hi");
 		return b.toString();
 	}
 	
