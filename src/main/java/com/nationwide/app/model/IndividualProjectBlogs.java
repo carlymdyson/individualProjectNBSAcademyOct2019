@@ -41,11 +41,10 @@ public class IndividualProjectBlogs {
 		this.blogpostdate = blogpostdate;
 		this.blogtext = blogtext;
 	}
-
+	
 	public IndividualProjectBlogs(String comment, String username) {
 		this.comment = comment;
 		this.username = username;
-//		this.commentdate = commentdate;
 	}
 	
 	public String getId() {
@@ -113,3 +112,5 @@ public class IndividualProjectBlogs {
 	
 	
 }
+
+

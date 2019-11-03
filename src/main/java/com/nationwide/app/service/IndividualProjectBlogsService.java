@@ -16,6 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mongodb.client.MongoDatabase;
 import com.nationwide.app.model.IndividualProjectBlogs;
 import com.nationwide.app.repository.IndividualProjectBlogsRepository;
 
@@ -40,30 +41,19 @@ public class IndividualProjectBlogsService {
 		return individualProjectBlogsRepository.findById(id);
 	}
 	
-	public IndividualProjectBlogs update(String blogtitle, String blogtext) {
-		IndividualProjectBlogs b = individualProjectBlogsRepository.findByBlogtitle(blogtitle);
-		b.setBlogtitle(blogtitle);
-		b.setBlogtext(blogtext);
-		return individualProjectBlogsRepository.save(b);
-	}
-
 	
 	public void delete(String id) {
-		Optional<IndividualProjectBlogs> b = individualProjectBlogsRepository.findById(id);
-		individualProjectBlogsRepository.deleteById(b);
+		individualProjectBlogsRepository.deleteById(id);
 	}
 	
 	public IndividualProjectBlogs insertComment(String id, String comment, String username) {
-		IndividualProjectBlogs b = IndividualProjectBlogsRepository.insert(comment, username);
-		return individualProjectBlogsRepository.save(b);
-		
-//		currentDate(String commentdate)
+			IndividualProjectBlogs b = IndividualProjectBlogsRepository.insert(comment, username);
+			return individualProjectBlogsRepository.save(b);
+			
 	}
-	
-	
-//	public Document insertComment(@RequestParam String comment, @RequestParam String username, @RequestParam Date commentdate) {
-//		IndividualProjectBlogs b = individualProjectBlogsService.insert(blogcomments.comment, blogcomments.username,blogcomments.commentdate);
-//		return b.toString();
-		
-
 }
+	
+	
+
+
+

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +24,7 @@ public class IndividualProjectBlogsController {
 	@Autowired
 	private IndividualProjectBlogsService individualProjectBlogsService;
 	
-//	@RequestMapping("/create/{blogtitle}/{blogtext}")
+
 	@RequestMapping("/create")
 	public String create(@RequestBody IndividualProjectBlogs blog) {
 		
@@ -48,17 +49,12 @@ public class IndividualProjectBlogsController {
 	public List<IndividualProjectBlogs> getAll() {
 		return individualProjectBlogsService.getAll();
 	}
-	
-	@RequestMapping("/update")
-	public String update(@RequestParam String blogtitle, @RequestParam String blogtext) {
-		IndividualProjectBlogs b = individualProjectBlogsService.update(blogtitle, blogtext);
-		return b.toString();
-	}
-	
-	@RequestMapping("/delete")
-	public String delete(@RequestParam String id) {
+
+	@RequestMapping("/delete/{id}")
+	public String delete(@PathVariable String id) {
 		individualProjectBlogsService.delete(id);
 		return "Deleted " + id;
 	}
 
 }
+

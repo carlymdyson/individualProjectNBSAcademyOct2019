@@ -15,16 +15,18 @@ import com.nationwide.app.model.IndividualProjectBlogs;
 public interface IndividualProjectBlogsRepository extends MongoRepository<IndividualProjectBlogs, String> {
 	public List<IndividualProjectBlogs> findAll();
 	public Optional<IndividualProjectBlogs> findById(String id);
+	
 	public IndividualProjectBlogs findByBlogtitle(String blogtitle);
-//	public IndividualProjectBlogs findById(String id);
+
+
+	
 	public void deleteById(Optional<IndividualProjectBlogs> b);
 	public Optional<IndividualProjectBlogs> insert(String comment);
 	public static IndividualProjectBlogs insert(String comment, String username) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	
-	}
-
-
+}
 
